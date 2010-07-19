@@ -1,0 +1,19 @@
+<%= form_for([@event, @time_table]) do |f| %>
+  <% if @event.errors.any? %>
+  <div id="errorExplanation">
+    <h3><%= pluralize(@event.errors.count, "error") %> prohibited this event from being saved:</h2>
+    <ul>
+    <% @event.errors.full_messages.each do |msg| %>
+      <li><%= msg %></li>
+    <% end %>
+    </ul>
+  </div>
+  <% end %>
+  <div class="field">
+    <%= f.label :email %>
+    <%= f.text_field :email, :value => (flash[:email] || '') %>
+  </div>
+  <div class="actions">
+    <%= f.submit "Edit My Availability" %>
+  </div>
+<% end %>

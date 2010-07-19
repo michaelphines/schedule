@@ -1,0 +1,33 @@
+<% content_for :javascripts do %>
+  <%= javascript_include_tag 'jquery.calendarSelect', 'showPage' %>
+<% end %>
+
+<div id="content">
+  <% if flash[:alert] %>
+    <h2 class="alert"><%= flash[:alert] %></h2>
+  <% end %>
+  <div id="info">
+    <h3>Sweet! Next?</h3>
+    Easy as pie:
+    <ol>
+      <li>Enter your email address</li>
+      <li>Select when you're available</li>
+      <li>The butler does the rest!</li>
+    </ol>
+  </div>
+  <div id="smallForm">
+    <div id="newTimeTable">
+      <h3><%= @event.title %></h3>
+      <h4>by <%= @event.email %></h4>
+      <p><%= url_for(:id => @event, :only_path => false) %></p>
+      <% if flash[:alert] %>
+      <% end %>
+      <%= render 'time_tables/form' %>
+    </div>
+  </div>
+  <div id="preview">
+    <div id="calendarSelect" class="static"></div>
+  </div>
+</div>
+<%= hidden_field_tag :availability, @event.availability.to_json %>
+<%= hidden_field_tag :max_attendance, @event.max_attendance.to_json %>

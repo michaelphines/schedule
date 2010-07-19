@@ -1,0 +1,349 @@
+body {
+  background-color: #ccc;
+} 
+
+/*.wf-loading {
+  visibility: hidden;
+}
+
+.wf-active, .wf-inactive {
+  visibility: visible;
+}
+*/
+#bodyContent {
+  border-top: 0px;
+  padding-top:40px;
+  background: -moz-linear-gradient(-90deg, #fff, #ccc 80px);
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(0, #fff), color-stop(0.2, #ccc));
+  -pie-background: linear-gradient(-90deg, #fff, #ccc 80px);
+  behavior: url(/javascripts/PIE.htc);
+}
+
+#header {
+  background-color: black;
+  color: #fff;
+  vertical-align: bottom;
+  font-family: hooligan-1;
+  text-transform: lowercase;
+  padding-bottom: 10px;
+}
+
+#header h1 {
+  font-size: 70px;
+  margin-top: -10px;
+  text-align: center;
+}
+
+#header h2 {
+  margin-top: -10px;
+  font-size: 20px;
+  font-family: hooligan-1;
+  text-align: center;
+}
+
+#info h3 {
+  font-family: hooligan-1;
+  font-size: 50px;
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+#info {
+  font-size: 22px;
+  font-family: bree-1;
+  width: 250px;
+  height: 200px;
+  padding-right: 30px;
+  float: left;
+  margin-right: 25px;
+  -moz-box-shadow: 5px 5px 10px 0px #bbb;
+  -webkit-box-shadow: 5px 5px 10px 0px #bbb;
+  box-shadow: 5px 5px 10px 0px #bbb;
+  -moz-border-radius: 0px 0px 10px 0px;
+  -webkit-border-radius: 0px 0px 10px 0px;
+  border-radius: 0px 0px 10px 0px;
+  behavior: url(/javascripts/PIE.htc);
+}
+
+#info ol {
+  font-size: 18px;
+  margin: 0px;
+  padding: 0px;
+  font-family: bree-1;
+}
+
+#info p {
+  font-size: 12px;
+}
+
+#info, #info li {
+  margin-left: 30px;
+}
+
+.actions {
+  text-align: center;
+}
+
+body, #bodyContent {
+  min-height: 300px;
+}
+
+#content {
+  margin: auto;
+  width: 840px;
+}
+
+#smallForm h3 {
+  font-size: 30px;
+  font-family: bree-1;
+  text-align: center;
+}
+
+#smallForm h4 {
+  font-size: 20px;
+  font-family: bree-1;
+  text-align: center;
+}
+
+label {
+  font-size: 20px;
+  font-family: bree-1;
+}
+
+input[type='submit'], input[type='button'] { 
+  font-family: bree-1;
+  font-size: 20px;
+  height: 40px;
+  width: 250px;
+  margin: auto;
+}
+
+input[type='text'] { 
+  font-size: 30px; 
+  width: 500px;
+  font-family: adrianne-1;
+  padding: 4px 8px 6px 8px;
+  border: none;
+  -moz-box-shadow: 1px 1px 3px 3px #bbb;
+  -webkit-box-shadow: 1px 1px 3px 3px #bbb;
+  box-shadow: 1px 1px 3px 3px #bbb;
+  background: -moz-linear-gradient(-90deg, #eee, #ddd 20px, #fff 40px);
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(0, #eee), color-stop(0.33, #ddd), color-stop(0.67, #fff));
+  -pie-background: linear-gradient(-90deg, #eee, #ddd 20px, #fff 40px);
+  behavior: url(/javascripts/PIE.htc);
+}
+
+h2.alert {
+  color: red;
+  text-align: center;
+  margin: -10px 0 20px 0;
+  padding: 5px;
+  border: 3px solid red;
+}
+
+#smallForm {
+  position: relative;
+  width: 500px;
+  height: 225px;
+  float: left;
+}
+
+#calendarSelect {
+  height: 225px;
+}
+
+#calendarSelect * {
+  white-space: nowrap;
+}
+
+#calendarSelect .title {
+  margin-bottom: 10px;
+}
+
+#calendarSelect ul.hours li.hour {
+  display: inline-block;
+  padding: 5px;
+  margin: 2px 2px 2px 0px;
+  border: 1px solid black;
+  font-size: 10px;
+  width: 16px;
+  text-align: center;
+  font-family: sans-serif;
+  -moz-border-radius: 5px;
+  -webkit-border-radius: 5px;
+  border-radius: 5px;
+  behavior: url(/javascripts/PIE.htc);
+}
+
+#calendarSelect ul.days li {
+  list-style-type: none;
+}
+
+#calendarSelect ul.hours {
+  display: inline-block;
+}
+
+#calendarSelect ul.days li span.date {
+  display: inline-block;
+  width: 25px;
+  font-size: 14px;
+  font-family: sans-serif;
+  font-weight: bold;
+}
+
+#calendarSelect {
+  width: 960px;
+}
+
+#calendarSelect a, #calendarSelect ul.days {
+  float: left;
+  vertical-align: middle;
+}
+
+#calendarSelect a.previous {
+  margin: 80px -32px;
+  -moz-transform: rotate(-90deg);
+  -webkit-transform: rotate(-90deg);
+  transform: rotate(-90deg);
+  behavior: url(/javascripts/PIE.htc);
+}
+
+#calendarSelect a.next {
+  margin: 80px -15px;
+  -moz-transform: rotate(90deg);
+  -webkit-transform: rotate(90deg);
+  transform: rotate(90deg);
+  behavior: url(/javascripts/PIE.htc);
+}
+
+.field div {
+  margin: 0px;
+  padding: 0px;
+}
+
+.fieldWithErrors input {
+  margin: 0px;
+  border-color: red;
+  color: red;
+}
+
+.fieldWithErrors {
+  color: red;
+}
+
+#errorExplanation {
+  display: none;
+}
+
+.ui-selectee {
+  background-color: #fff;
+}
+
+.ui-selected {
+  background-color: #5f5;
+}
+
+.ui-unselecting {
+  background-color: #5f5;
+}
+
+.ui-selectable-helper {
+  border: 1px dotted black;
+}
+
+.cs-unselecting .ui-selecting {
+  background-color: #fff;
+}
+
+#newTimeTable p {
+  text-align: center;
+  margin: 0px;
+}
+
+#notice {
+  color: green;
+  padding: 20px;
+  clear: both;
+}
+
+.hot {
+  color: green;
+  font-weight: bold;
+  -moz-box-shadow: 0px 0px 20px 0px green;
+  -webkit-box-shadow: 0px 0px 20px 0px green;
+  box-shadow: 0px 0px 20px 0px green;
+  behavior: url(/javascripts/PIE.htc);
+}
+
+.warm {
+  color: orange;
+  -moz-box-shadow: 0px 0px 20px 0px yellow;
+  -webkit-box-shadow: 0px 0px 20px 0px yellow;
+  box-shadow: 0px 0px 20px 0px yellow;
+  behavior: url(/javascripts/PIE.htc);
+}
+
+.cold {
+  color: red;
+  -moz-box-shadow: 0px 0px 20px 0px red;
+  -webkit-box-shadow: 0px 0px 20px 0px red;
+  box-shadow: 0px 0px 20px 0px red;
+  behavior: url(/javascripts/PIE.htc);
+}
+
+.newSchedule .ui-selected, .newSchedule .ui-selecting, .newSchedule .ui-unselecting {
+  -moz-box-shadow: 0px 0px 10px 0px green;  
+  -webkit-box-shadow: 0px 0px 10px 0px green;  
+  box-shadow: 0px 0px 10px 0px green;  
+  behavior: url(/javascripts/PIE.htc);
+}
+
+.hot.ui-selected, 
+.warm.ui-selected, 
+.cold.ui-selected, 
+.hot.ui-unselecting, 
+.warm.ui-unselecting, 
+.cold.ui-unselecting,
+.hot.ui-selecting, 
+.warm.ui-selecting, 
+.cold.ui-selecting
+{
+  color: black;
+}
+
+.static ul li.hour {
+  color: black;
+}
+
+.static .hot {
+  background-color: #afa;
+}
+
+.static .warm {
+  background-color: #ffa;
+}
+
+.static .cold {
+  background-color: #faa;
+}
+
+#preview {
+  clear:both;
+}
+
+.ui-selecting {
+  background-color: #afa;
+}
+
+body, h1, h2, h3, h4, h5, ul, ul li {
+  margin: 0px;
+  padding: 0px;
+}
+
+body {
+  font-family: bree-1;
+}
+
+div.field, div.actions {
+  margin-bottom: 10px;
+}

@@ -1,0 +1,24 @@
+<% content_for(:javascripts) do %>  
+  <%= javascript_include_tag('jquery.calendarSelect') %>
+  <%= javascript_include_tag('editPage') %>
+<% end %>
+
+<div id="content">
+  <% if flash[:alert] %>
+    <h2 class="alert"><%= flash[:alert] %></h2>
+  <% end %>
+  <h3><%= @event.title %></h3>
+  <h4>for <%= @time_table.email %></h4>
+  <div id="calendarSelect"></div>
+  <%= hidden_field_tag :availability, @event.availability.to_json %>
+  <%= hidden_field_tag :max_attendance, @event.max_attendance.to_json %>
+  <%= form_for([@event, @time_table]) do |f| %>
+  <%= f.hidden_field :times %>
+    <div class="actions">
+      <% unless notice.blank? %>
+        <div id="notice"><%= notice %></div>
+      <% end %>
+      <%= f.submit %>
+    </div>
+  <% end %>
+</div>
