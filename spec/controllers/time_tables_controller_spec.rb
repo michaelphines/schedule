@@ -6,30 +6,6 @@ describe TimeTablesController do
     @mock_time_table ||= mock_model(TimeTable, stubs).as_null_object
   end
 
-  describe "GET index" do
-    it "assigns all time_tables as @time_tables" do
-      TimeTable.stub(:all) { [mock_time_table] }
-      get :index
-      assigns(:time_tables).should eq([mock_time_table])
-    end
-  end
-
-  describe "GET show" do
-    it "assigns the requested time_table as @time_table" do
-      TimeTable.stub(:find).with("37") { mock_time_table }
-      get :show, :id => "37"
-      assigns(:time_table).should be(mock_time_table)
-    end
-  end
-
-  describe "GET new" do
-    it "assigns a new time_table as @time_table" do
-      TimeTable.stub(:new) { mock_time_table }
-      get :new
-      assigns(:time_table).should be(mock_time_table)
-    end
-  end
-
   describe "GET edit" do
     it "assigns the requested time_table as @time_table" do
       TimeTable.stub(:find).with("37") { mock_time_table }
@@ -107,19 +83,4 @@ describe TimeTablesController do
     end
 
   end
-
-  describe "DELETE destroy" do
-    it "destroys the requested time_table" do
-      TimeTable.should_receive(:find).with("37") { mock_time_table }
-      mock_time_table.should_receive(:destroy)
-      delete :destroy, :id => "37"
-    end
-
-    it "redirects to the time_tables list" do
-      TimeTable.stub(:find) { mock_time_table(:destroy => true) }
-      delete :destroy, :id => "1"
-      response.should redirect_to(time_tables_url)
-    end
-  end
-
 end
