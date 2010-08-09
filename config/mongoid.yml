@@ -1,19 +1,22 @@
 defaults: &defaults
-  host: <%= ENV['SCHEDULE_MONGO_HOST'] %>
-  port: <%= ENV['SCHEDULE_MONGO_PORT'] %>
-  username: <%= ENV['SCHEDULE_MONGO_USER'] %>
-  password: <%= ENV['SCHEDULE_MONGO_PASSWORD'] %>
+  # host: <%= ENV['SCHEDULE_MONGO_HOST'] %>
+  # port: <%= ENV['SCHEDULE_MONGO_PORT'] %>
+  # username: <%= ENV['SCHEDULE_MONGO_USER'] %>
+  # password: <%= ENV['SCHEDULE_MONGO_PASSWORD'] %>
+  # database: <%= "#{ENV['SCHEDULE_MONGO_DATABASE']}-#{Rails.env}" %>
+
+  host: localhost
+  port: 27017
   database: <%= "#{ENV['SCHEDULE_MONGO_DATABASE']}-#{Rails.env}" %>
 
 development:
   <<: *defaults
 
-  # host: localhost
-  # port: 27017
-  # database: <%= "#{ENV['SCHEDULE_MONGO_DATABASE']}-#{Rails.env}" %>
-
 test:
-  <<: *defaults
+  # <<: *defaults
+  host: localhost
+  port: 27017
+  database: <%= "#{ENV['SCHEDULE_MONGO_DATABASE']}-#{Rails.env}" %>
 
 production:
   <<: *defaults
