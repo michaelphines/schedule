@@ -1,9 +1,5 @@
 require 'spec_helper'
 
 describe "Events" do
-  describe "GET /events" do
-    it "works! (now write some real specs)" do
-      get events_path
-    end
-  end
+  pending "add some examples to (or delete) #{__FILE__}"
 end
