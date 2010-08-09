@@ -1,3 +1,5 @@
+require 'permalinkable'
+
 class TimeTable < BaseModel
   include Mongoid::Document
   include Permalinkable

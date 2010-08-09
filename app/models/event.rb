@@ -1,3 +1,5 @@
+require 'permalinkable'
+
 class Event < BaseModel
   include Mongoid::Document
   include Permalinkable
