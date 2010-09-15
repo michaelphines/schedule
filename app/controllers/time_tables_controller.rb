@@ -30,7 +30,8 @@ class TimeTablesController < ApplicationController
         format.html { redirect_to(edit_event_time_table_path(@event, @time_table), :notice => 'Time table was successfully created.') }
         format.xml  { render :xml => @time_table, :status => :created, :location => @time_table }
       else
-        format.html { render :action => '/events/show', :id => @event }
+        flash[:email] = params[:time_table][:email]
+        format.html { redirect_to(@event) }
         format.xml  { render :xml => @time_table.errors, :status => :unprocessable_entity }
       end
     end
@@ -41,14 +42,14 @@ class TimeTablesController < ApplicationController
   def update
     @event = Event.from_param(params[:event_id])
     @time_table = @event.time_tables.where(:permalink => params[:id]).first
-    params[:time_table][:times] = JSON.parse(params[:time_table][:times])
+    params[:time_table][:times] = JSON.parse(params[:time_table][:times]) if params[:time_table] && params[:time_table][:times] rescue nil
 
     respond_to do |format|
       if @time_table.update_attributes(params[:time_table])
         format.html { redirect_to(edit_event_time_table_path(@event, @time_table), :notice => 'Time table was successfully updated.') }
         format.xml  { head :ok }
       else
-        format.html { render @time_table }
+        format.html { redirect_to(edit_event_time_table_path(@event, @time_table), :error => 'Error updating time table.') }
         format.xml  { render :xml => @time_table.errors, :status => :unprocessable_entity }
       end
     end

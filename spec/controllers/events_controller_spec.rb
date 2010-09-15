@@ -7,12 +7,12 @@ describe EventsController do
   end
 
   def mock_time_table(stubs={})
-    @mock_event ||= mock_time_table(TimeTable, stubs).as_null_object
+    @mock_time_table ||= mock_model(TimeTable, stubs).as_null_object
   end
 
   describe "GET show" do
     it "assigns the requested event as @event" do
-      Event.stub(:find).with("37") { mock_event }
+      Event.stub(:from_param).with("37") { mock_event }
       get :show, :id => "37"
       assigns(:event).should be(mock_event)
     end
@@ -36,9 +36,9 @@ describe EventsController do
       end
 
       it "assigns a newly created time_table as @time_table" do
-        TimeTable.stub(:new).with({'these' => 'params'}) { mock_event(:save => true) }
+        TimeTable.stub(:new) { mock_time_table(:save => true) }
         post :create, :event => {'these' => 'params'}
-        assigns(:time_table).should be(mock_event)
+        assigns(:time_table).should be(mock_time_table)
       end
 
       it "redirects to the created event" do
