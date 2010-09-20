@@ -42,17 +42,13 @@ class TimeTablesController < ApplicationController
   def update
     @event = Event.from_param(params[:event_id])
     @time_table = @event.time_tables.where(:permalink => params[:id]).first
-    params[:time_table][:times] = JSON.parse(params[:time_table][:times]) if params[:time_table] && params[:time_table][:times] rescue nil
-
-    respond_to do |format|
-      if @time_table.update_attributes(params[:time_table])
-        format.html { redirect_to(edit_event_time_table_path(@event, @time_table), :notice => 'Time table was successfully updated.') }
-        format.xml  { head :ok }
-      else
-        format.html { redirect_to(edit_event_time_table_path(@event, @time_table), :error => 'Error updating time table.') }
-        format.xml  { render :xml => @time_table.errors, :status => :unprocessable_entity }
-      end
+    if params[:time_table] && params[:time_table][:times] && @time_table.update_attribute(:times, JSON.parse(params[:time_table][:times]))
+      update_success
+    else
+      update_failure
     end
+  rescue JSON::ParserError
+    update_failure
   end
 
   # DELETE /time_tables/1
@@ -66,4 +62,22 @@ class TimeTablesController < ApplicationController
       format.xml  { head :ok }
     end
   end
+
+private
+  
+  def update_failure
+    respond_to do |format|
+      format.html { redirect_to(edit_event_time_table_path(@event, @time_table), :notice => 'Time table was successfully updated.') }
+      format.xml  { head :ok }
+    end
+  end
+  
+  def update_success
+    respond_to do |format|
+      format.html { redirect_to(edit_event_time_table_path(@event, @time_table), :error => 'Error updating time table.') }
+      format.xml  { render :xml => @time_table.errors, :status => :unprocessable_entity }
+    end
+  end
+
+
 end
