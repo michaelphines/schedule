@@ -53,6 +53,14 @@ describe EventsController do
         post :create, :event => {:email => email}
         response.should redirect_to(edit_event_time_table_url(mock_event, mock_time_table))
       end
+      
+      it "flashes a new_event dialog" do
+        Event.stub(:new) { mock_event(:save => true) }
+        TimeTable.stub(:new) { mock_time_table(:save => true) }
+        post :create, :event => {'these' => 'params'}
+
+        flash[:new_event].should == true
+      end
     end
 
     describe "with invalid params" do

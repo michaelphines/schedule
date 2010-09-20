@@ -26,7 +26,7 @@ class EventsController < ApplicationController
     
     respond_to do |format|
       if @time_table.save
-        flash[:email] = @event.email
+        flash[:new_event] = true
         flash[:alert] = "Bookmark this page, and send it to your friends, it's the only way to get here!"
         format.html { redirect_to(edit_event_time_table_url(@event.permalink, @time_table.permalink), :notice => 'Event was successfully created.') }
         format.xml  { render :xml => @event, :status => :created, :location => @event }
