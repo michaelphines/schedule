@@ -42,11 +42,9 @@ class TimeTablesController < ApplicationController
   def update
     @event = Event.from_param(params[:event_id])
     @time_table = @event.time_tables.where(:permalink => params[:id]).first
-    if params[:time_table] && params[:time_table][:times] && @time_table.update_attributes(:times => JSON.parse(params[:time_table][:times]))
-      update_success
-    else
-      update_failure
-    end
+    success = params[:time_table] && params[:time_table][:times] && 
+              @time_table.update_attributes(:times => JSON.parse(params[:time_table][:times]))
+    success ? update_success : update_failure
   rescue JSON::ParserError
     update_failure
   end
