@@ -21,12 +21,14 @@ class EventsController < ApplicationController
 
   def create
     @event = Event.new(params[:event])
+    @time_table = TimeTable.new(:email => params[:event][:email])
+    @event.time_tables << @time_table
     
     respond_to do |format|
-      if @event.save
+      if @time_table.save
         flash[:email] = @event.email
         flash[:alert] = "Bookmark this page, and send it to your friends, it's the only way to get here!"
-        format.html { redirect_to(@event, :notice => 'Event was successfully created.') }
+        format.html { redirect_to(edit_event_time_table_url(@event.permalink, @time_table.permalink), :notice => 'Event was successfully created.') }
         format.xml  { render :xml => @event, :status => :created, :location => @event }
       else
         format.html { render :action => "new" }

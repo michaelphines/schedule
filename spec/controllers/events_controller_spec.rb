@@ -30,33 +30,42 @@ describe EventsController do
 
     describe "with valid params" do
       it "assigns a newly created event as @event" do
-        Event.stub(:new).with({'these' => 'params'}) { mock_event(:save => true) }
+        Event.stub(:new) { mock_event(:save => true) }
+        TimeTable.stub(:new) { mock_time_table(:save => true) }
         post :create, :event => {'these' => 'params'}
         assigns(:event).should be(mock_event)
       end
 
       it "assigns a newly created time_table as @time_table" do
-        TimeTable.stub(:new) { mock_time_table(:save => true) }
+        Event.stub(:new) { mock_event(:save => true, :time_tables => []) }
+        TimeTable.should_receive(:new) { mock_time_table(:save => true) }
         post :create, :event => {'these' => 'params'}
         assigns(:time_table).should be(mock_time_table)
       end
 
-      it "redirects to the created event" do
-        Event.stub(:new) { mock_event(:save => true) }
-        post :create, :event => {}
-        response.should redirect_to(event_url(mock_event))
+      it "redirects to edit a new TimeTable in the event" do
+        email = "john@mrdoe.com"
+        time_tables = []
+        Event.stub(:new) { mock_event(:save => true, :time_tables => time_tables) }
+
+        TimeTable.should_receive(:new).with(:email => email).and_return(mock_time_table)
+        time_tables.should_receive(:<<).with(mock_time_table)
+        post :create, :event => {:email => email}
+        response.should redirect_to(edit_event_time_table_url(mock_event, mock_time_table))
       end
     end
 
     describe "with invalid params" do
       it "assigns a newly created but unsaved event as @event" do
-        Event.stub(:new).with({'these' => 'params'}) { mock_event(:save => false) }
+        Event.stub(:new) { mock_event(:save => false) }
+        TimeTable.stub(:new) { mock_time_table(:save => false) }
         post :create, :event => {'these' => 'params'}
         assigns(:event).should be(mock_event)
       end
 
       it "re-renders the 'new' template" do
         Event.stub(:new) { mock_event(:save => false) }
+        TimeTable.stub(:new) { mock_time_table(:save => false) }
         post :create, :event => {}
         response.should render_template("new")
       end
