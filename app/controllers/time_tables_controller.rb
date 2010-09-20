@@ -14,7 +14,7 @@ class TimeTablesController < ApplicationController
   def edit
     @event = Event.from_param(params[:event_id])
     @time_table = @event.time_tables.where(:permalink => params[:id]).first
-    @time_table.times = @time_table.times.to_json
+    @times = @time_table.times.to_json
   end
 
   # POST /time_tables
@@ -42,7 +42,7 @@ class TimeTablesController < ApplicationController
   def update
     @event = Event.from_param(params[:event_id])
     @time_table = @event.time_tables.where(:permalink => params[:id]).first
-    if params[:time_table] && params[:time_table][:times] && @time_table.update_attribute(:times, JSON.parse(params[:time_table][:times]))
+    if params[:time_table] && params[:time_table][:times] && @time_table.update_attributes(:times => JSON.parse(params[:time_table][:times]))
       update_success
     else
       update_failure

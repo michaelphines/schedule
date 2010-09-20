@@ -58,8 +58,8 @@ describe TimeTablesController do
     describe "with valid params" do
       it "updates the requested time_table" do
         @time_tables.stub(:where).with(:permalink => "37").and_return([@mock_time_table])
-        @mock_time_table.should_receive(:update_attributes).with({'these' => 'params'})
-        put :update, :id => "37", :time_table => {'these' => 'params'}, :event_id => "1"
+        @mock_time_table.should_receive(:update_attributes).with(:times => [1234])
+        put :update, :id => "37", :time_table => {:times => '[1234]'}, :event_id => "1"
       end
 
       it "assigns the requested time_table as @time_table" do

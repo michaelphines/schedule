@@ -13,7 +13,7 @@
   <%= hidden_field_tag :availability, @event.availability.to_json %>
   <%= hidden_field_tag :max_attendance, @event.max_attendance.to_json %>
   <%= form_for([@event, @time_table]) do |f| %>
-  <%= f.hidden_field :times %>
+  <%= f.hidden_field :times, :value => @times %>
     <div class="actions">
       <% unless notice.blank? %>
         <div id="notice"><%= notice %></div>
