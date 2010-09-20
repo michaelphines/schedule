@@ -35,6 +35,10 @@ $(function() {
     timesField.val(JSON.stringify(timesArray));
   });
 
+  if ($('#newEvent')) {
+    $('#newEvent').dialog();
+  }
+
   calendar.calendarSelect({ value: times,
                             animate: true,
                             startDate: startDate, 
