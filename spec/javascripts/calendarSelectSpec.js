@@ -69,7 +69,7 @@ describe('week changing functions', function() {
 	it('goes to the previous week when previous week is clicked', function() {
     calendar.children("a.previous").click();
 		var sundayListItem = getDaysFromCalendar(calendar).first();
-		expect(sundayListItem.children("span.date").text()).toEqual('1');
+		expect(sundayListItem.children("span.date").text()).toEqual('Sun 1');
 	});
 	
 	it('changes the date when previous week is clicked', function() {
@@ -81,7 +81,7 @@ describe('week changing functions', function() {
 	it('goes to the next week when next week is clicked', function() {
 		calendar.children("a.next").click();
 		var sundayListItem = getDaysFromCalendar(calendar).first();
-		expect(sundayListItem.children("span.date").text()).toEqual('15');
+		expect(sundayListItem.children("span.date").text()).toEqual('Sun 15');
 	});
 	
 	it('changes the date when next week is clicked', function() {
@@ -118,18 +118,20 @@ describe('calendar select options', function() {
 		var sundayListItem = getDaysFromCalendar(calendar).first();
 		
 		// The 11th was a Wednesday, so the previous Sunday was the 8th.
-		expect(sundayListItem.children("span.date").text()).toEqual('8');
+		expect(sundayListItem.children("span.date").text()).toEqual('Sun 8');
 	});
 	
 	it('uses today as the start date if no date is specified', function() {
 		var todaysDate = new Date().getDate().toString();
 
 		calendar.calendarSelect();
-		var dayNumbers = 
+		var dayLabels = 
 			getDaysFromCalendar(calendar).map(function() {
 				return $(this).children("span.date").text();
 			}).toArray();
-		
+		var dayNumbers = dayLabels.map(function(value) {
+		  return value.match(/ (.*)/)[1]
+		});
 		expect(dayNumbers).toContain(todaysDate);
 	});
 });

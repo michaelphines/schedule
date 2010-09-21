@@ -4,6 +4,7 @@ require 'jazz_money'
 javascript_files = [
   'public/javascripts/jquery-1.4.2.js',
   'public/javascripts/jquery-ui-1.8.2.custom.min.js',
+  'public/javascripts/jquery.tipTip.minified.js',
   'public/javascripts/scheduleButler.js',
   'public/javascripts/jquery.calendarSelect.js',
   'spec/javascripts/helpers/SpecHelper.js'
