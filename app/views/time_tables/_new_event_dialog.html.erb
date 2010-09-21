@@ -1,0 +1,14 @@
+<div id="newEvent" title="Welcome to Schedule Butler!">
+  <div class="description">
+    Congratulations, welcome to Schedule Butler!  You have just created a new event.
+    To let your friends know about your event, all you have to do is send them an email
+    with a link to the sign up page for your event.  This is provided for you below.
+    If you want to come back to edit your own best times, just bookmark this page.
+  </div>
+  <div class="links">
+    <p>Send your friends this url:</p>
+    <div class="newEventUrl"><%= event_url(@event) %></div>
+    <p>Bookmark this url for yourself:</p>
+    <div class="newTimeTableUrl"><%= event_time_table_url(@event, @time_table) %></div>      
+  </div>
+</div>

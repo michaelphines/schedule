@@ -1,0 +1,11 @@
+<div id="newDialog" title="Welcome to Schedule Butler!">
+  <div class="description">
+    Congratulations, welcome to Schedule Butler!  You have just signed up for "<%= @event.title %>".
+    The address of this page is your key to getting back here to update your times, so you should
+    either write down the location of this page or bookmark it now.
+  </div>
+  <div class="links">
+    <p>Bookmark this url in case your schedule changes:</p>
+    <div class="newTimeTableUrl"><%= event_time_table_url(@event, @time_table) %></div>      
+  </div>
+</div>

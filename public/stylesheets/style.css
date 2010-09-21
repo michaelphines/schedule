@@ -351,19 +351,19 @@ div.field, div.actions {
   margin-bottom: 10px;
 }
 
-#newEvent p {
+#newDialog p {
   margin: 0;
   font-size: 12px;
   font-family: adrianne-1, adrianne-2;
 }
 
-#newEvent .description {
+#newDialog .description {
   font-family: adrianne-1, adrianne-2;
   font-size: 12px;
   margin-bottom: 15px;
 }
 
-#newEvent .links {
+#newDialog .links {
   background-color: #EEE;
          
   -moz-box-shadow: 0px 0px 10px 10px #EEE;
