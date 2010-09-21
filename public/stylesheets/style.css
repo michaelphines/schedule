@@ -167,6 +167,7 @@ h2.alert {
   width: 19px;
   vertical-align: middle;
   text-align: center;
+  cursor: crosshair;
   -moz-border-radius: 5px;
   -webkit-border-radius: 5px;
   border-radius: 5px;
