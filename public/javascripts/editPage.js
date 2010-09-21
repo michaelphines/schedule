@@ -1,4 +1,6 @@
 $(function() {
+  ScheduleButler.createCalendar('#calendarSelect');
+
   $('form').submit(function(e) {
     var timesObj = $('#calendarSelect').data('calendarSelect');
     var timesArray = [];
@@ -6,6 +8,7 @@ $(function() {
       timesArray.push(timesObj[time]);
     }
     $('#time_table_times').val(JSON.stringify(timesArray));
+    $('#calendarSelect').data('modified', false);
   });
 
   $('#newDialog').dialog();
@@ -46,5 +49,11 @@ $(function() {
     $('#googleCalendarDisconnect').hide();
   }
 
-  ScheduleButler.createCalendar('#calendarSelect');
+  window.onbeforeunload = function() {
+    if ($('#calendarSelect').data('modified')) {
+      return "Your changes have not been saved yet.";
+    } else {
+      return null;
+    }
+  }
 });

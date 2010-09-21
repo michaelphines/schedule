@@ -199,6 +199,8 @@
 
     function onSelected(calendar) {
       return function(event, ui) {
+        calendar.domObject.data('modified', true);
+        
         var unselecting = calendar.unselecting;
         var selectedTimes = calendar.selectedTimes();
 
