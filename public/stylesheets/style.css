@@ -92,7 +92,7 @@ body, #bodyContent {
 
 #content {
   margin: auto;
-  width: 740px;
+  width: 850px;
 }
 
 #smallForm h3 {
@@ -163,11 +163,10 @@ h2.alert {
   padding: 5px;
   margin: 1px 1px 1px 0px;
   border: 1px solid black;
-  font-size: 10px;
-  width: 18px;
+  font-size: 12px;
+  width: 19px;
   vertical-align: middle;
   text-align: center;
-  font-family: sans-serif;
   -moz-border-radius: 5px;
   -webkit-border-radius: 5px;
   border-radius: 5px;
@@ -188,21 +187,16 @@ h2.alert {
 
 #calendarSelect ul.days li span.date {
   display: inline-block;
-  width: 25px;
+  width: 50px;
+  padding-right: 10px;
+  text-align: right;
   font-size: 14px;
-  font-family: sans-serif;
-  font-weight: bold;
-}
-
-#calendarSelect {
-  width: 960px;
 }
 
 #calendarSelect a.previous, #calendarSelect a.next {
   display: block;
   padding: 10px;
   text-align: center;
-  width: 730px;
 }
 
 .field div {

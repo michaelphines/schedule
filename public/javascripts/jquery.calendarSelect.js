@@ -123,7 +123,7 @@
         var dayItem  = $('<li class="day">');
         var dateSpan = $('<span class="date">');
         var thisDate = dayOf(date, i);
-        dateSpan.text(thisDate.getDate());
+        dateSpan.text(dayString(thisDate.getDay()) + " " + thisDate.getDate());
         dayItem.data(thisDate)
                .append(dateSpan)
                .append(this.drawHours(thisDate))
@@ -252,6 +252,12 @@
       var months = ['January', 'February', 'March', 
         'April', 'May', 'June', 'July', 'August', 
         'September', 'October', 'November', 'December']
+      return months[n];
+    }
+
+    function dayString(n) {
+      var months = ['Sun', 'Mon', 'Tue',
+      'Wed', 'Thu', 'Fri', 'Sat']
       return months[n];
     }
     
