@@ -1,16 +1,20 @@
 <% content_for(:javascripts) do %>  
   <%= javascript_include_tag('jquery.calendarSelect') %>
   <%= javascript_include_tag('editPage') %>
+  <script type="text/javascript" src="http://www.google.com/jsapi"></script>
+  <script type="text/javascript">google.load("gdata", "1");</script>
 <% end %>
 
 <div id="content">
+  <input type="button" value="Connect to Google Calendar" id="googleCalendarConnect" />
+  <input type="button" value="Disconnect from Google" id="googleCalendarDisconnect" />
   <h3><%= @event.title %></h3>
   <h4>for <%= @time_table.email %></h4>
   <div id="calendarSelect"></div>
   <%= hidden_field_tag :availability, @event.availability.to_json %>
   <%= hidden_field_tag :max_attendance, @event.max_attendance.to_json %>
   <%= form_for([@event, @time_table]) do |f| %>
-  <%= f.hidden_field :times, :value => @times %>
+    <%= f.hidden_field :times, :value => @times %>
     <div class="actions">
       <%= f.submit %>
     </div>
@@ -19,3 +23,4 @@
 
 <%= render :partial => 'new_event_dialog' if flash[:new_event] %>
 <%= render :partial => 'new_time_table_dialog' if flash[:new_time_table] %>
+<img src="/images/pixel.gif" style="width: 1px; height: 1px;" />

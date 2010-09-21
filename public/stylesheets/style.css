@@ -379,6 +379,16 @@ div.field, div.actions {
   text-align: center;
 }
 
+input#googleCalendarConnect,input#googleCalendarDisconnect {
+  float: right;
+  font-size: 15px;
+  height: 30px;
+  width: auto;
+}
+
+input#googleCalendarDisconnect {
+  display: none;
+}
 
 
 .ui-dialog {
