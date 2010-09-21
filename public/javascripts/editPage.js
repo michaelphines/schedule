@@ -1,8 +1,8 @@
 $(function() {
 
   var timesField = $('#time_table_times');
-  var availabilityField = $('#availability')
-  var maxAttendanceField = $('#max_attendance')
+  var availabilityField = $('#availability');
+  var maxAttendanceField = $('#max_attendance');
   var calendar = $('#calendarSelect');
   
   try {
