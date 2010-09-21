@@ -9,6 +9,21 @@ $(function() {
   });
 
   $('#newDialog').dialog();
+  
+  base_uri = 'http://' + location.host + 
+             '/events/' + ScheduleButler.currentEvent() + 
+             '/time_tables/' + ScheduleButler.currentTimeTable();
+  
+  $('#newEventEmail').click(function() {
+    $.post(base_uri + '/send_created_event', {}, function() {
+      $('#newDialog').dialog('close');
+    });
+  });
+  $('#newTimeTableEmail').click(function() {
+    $.post(base_uri + '/send_joined_event', {}, function() {
+      $('#newDialog').dialog('close');
+    });
+  });
 
   ScheduleButler.createCalendar('#calendarSelect');
 });

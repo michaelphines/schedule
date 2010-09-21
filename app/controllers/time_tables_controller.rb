@@ -61,6 +61,20 @@ class TimeTablesController < ApplicationController
     end
   end
 
+  def send_created_event
+    event = Event.from_param(params[:event_id])
+    time_table = event.time_tables.where(:permalink => params[:id]).first
+    NewEventMailer.created_event(event, time_table).deliver
+    render :text => '"OK"'
+  end
+  
+  def send_joined_event
+    event = Event.from_param(params[:event_id])
+    time_table = event.time_tables.where(:permalink => params[:id]).first
+    NewEventMailer.joined_event(event, time_table).deliver
+    render :text => '"OK"'
+  end
+
 private
   
   def update_failure

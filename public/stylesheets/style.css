@@ -359,6 +359,15 @@ div.field, div.actions {
   behavior: url(/javascripts/PIE.htc);
 }
 
+#newDialog .buttons {
+  padding: 10px;
+  text-align:center;
+}
+
+#newDialog .buttons input {
+  font-size: 15px;
+  height: 30px;
+}
 .newEventUrl, .newTimeTableUrl {
   text-align: center;
 }

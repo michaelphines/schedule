@@ -1,4 +1,12 @@
 ScheduleButler = {
+  currentEvent: function() {
+    return location.href.match(/\/events\/([^\/?]+)/)[1]
+  },
+
+  currentTimeTable: function() {
+    return location.href.match(/\/time_tables\/([^\/?]+)/)[1]
+  },
+  
   parseAllFields: function(force) {
     return {
       times: ScheduleButler.parseField('#time_table_times', force),
