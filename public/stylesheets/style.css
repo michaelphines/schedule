@@ -275,6 +275,13 @@ h2.alert {
   behavior: url(/javascripts/PIE.htc);
 }
 
+.newSchedule .cold {
+  color: black;
+  -moz-box-shadow: 0px 0px 20px 0px white;
+  -webkit-box-shadow: 0px 0px 20px 0px white;
+  box-shadow: 0px 0px 20px 0px white;  
+}
+
 .newSchedule .ui-selected, .newSchedule .ui-selecting, .newSchedule .ui-unselecting {
   -moz-box-shadow: 0px 0px 10px 0px green;  
   -webkit-box-shadow: 0px 0px 10px 0px green;  
