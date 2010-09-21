@@ -28,9 +28,6 @@
   <%= form_for([@event, @time_table]) do |f| %>
   <%= f.hidden_field :times, :value => @times %>
     <div class="actions">
-      <% unless notice.blank? %>
-        <div id="notice"><%= notice %></div>
-      <% end %>
       <%= f.submit %>
     </div>
   <% end %>
