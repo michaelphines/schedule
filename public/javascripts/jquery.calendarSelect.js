@@ -19,7 +19,8 @@
     this.domObject = undefined;
     this.unselecting = false;
     this.currentDate = dayOf(settings.startDate, 0);
-    this.availability = [];
+    this.availability = {};
+    this.emails = {};
 
     this.init = function(domObject) {
       this.domObject = $(domObject);
@@ -41,16 +42,19 @@
         });
 
         var availability = this.availability;
+        var emails = this.emails;
         var maxAttendance = this.settings.maxAttendance;
         $(this.settings.availability).each(function(index, value) {
           if (value) {
             date = new Date(value.time).valueOf();
             if (maxAttendance != 0) availability[date] = value.count/maxAttendance;
+            emails[date] = value.emails;
           }
         });
       } catch(e) {
         this.startDate = new Date();
         this.availability = {};
+        this.emails = {}
         this.selectedTimes({});
       }
     };
@@ -147,6 +151,9 @@
               .addClass("selected")
               .data("selected", true);
         }
+        
+        var emails = this.emails[thisTime.valueOf()];
+        if (emails) item.attr('title', emails.join('<br />'));
         
         this.colorHour(item, thisTime);
 

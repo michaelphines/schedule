@@ -3,6 +3,7 @@ describe('ScheduleButler', function() {
     //jasmine doesn't reset the DOM after each test
     $('body').html('');
   });
+  
   describe('.createCalendar', function() {
     describe('new calendar', function() {
       it('calls it a new schedule if maxAttendance is 0', function () {

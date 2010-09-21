@@ -38,7 +38,9 @@ ScheduleButler = {
       animate: true,
       startDate: startDate, 
       availability: fields.availability, 
-      maxAttendance: maxAttendanceCount 
+      maxAttendance: maxAttendanceCount
     });
+    
+    $('#calendarSelect .hour').tipTip();
   }
 };
