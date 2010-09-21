@@ -34,6 +34,12 @@ describe TimeTablesController do
         post :create, :time_table => {}, :event_id => "1"
         response.should redirect_to(edit_event_time_table_url(@mock_event, @mock_time_table))
       end
+      
+      it "flashes a new_event dialog" do
+        TimeTable.stub(:new).and_return(@mock_time_table)
+        post :create, :time_table => {}, :event_id => "1"
+        flash[:new_time_table].should == true
+      end
     end
 
     describe "with invalid params" do

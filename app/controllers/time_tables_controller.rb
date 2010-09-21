@@ -26,6 +26,7 @@ class TimeTablesController < ApplicationController
 
     respond_to do |format|
       if @time_table.save
+        flash[:new_time_table] = true
         format.html { redirect_to(edit_event_time_table_path(@event, @time_table), :notice => 'Time table was successfully created.') }
         format.xml  { render :xml => @time_table, :status => :created, :location => @time_table }
       else
