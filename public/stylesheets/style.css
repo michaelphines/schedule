@@ -295,8 +295,9 @@ h2.alert {
   color: black;
 }
 
-.static ul li.hour {
+#calendarSelect.static ul.hours li.hour {
   color: black;
+  cursor: help;
 }
 
 .static .hot {
