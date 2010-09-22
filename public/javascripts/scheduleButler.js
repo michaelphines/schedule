@@ -7,10 +7,10 @@ ScheduleButler = {
     return location.href.match(/\/time_tables\/([^\/?]+)/)[1]
   },
   
-  availabilityRange: function() {
-    availability = ScheduleButler.parseField('#availability');
-    if (availability.length == 0) return [0, 0];
-    else return [availability[0].time, availability[availability.length-1].time];
+  currentPageRange: function() {
+    first = $('#calendarSelect .hour').first().data('time');
+    last = $('#calendarSelect .hour').last().data('time');
+    return [first, last];
   },
   
   parseAllFields: function(force) {
@@ -93,7 +93,7 @@ ScheduleButler = {
   },
   
   injectGoogleData: function(callback, errorCallback) {
-    var range = ScheduleButler.availabilityRange();
+    var range = ScheduleButler.currentPageRange();
     var handleSuccess = function(root) {
       var events = root.feed.getEntries();
       var googleEvents = {};
@@ -108,12 +108,12 @@ ScheduleButler = {
           $(value).data('googleEvents', events);
         }
       });
-      callback(events);
+      if(callback) callback(events);
     };  
     
     var handleError = function(error) {
       if (console) console.log(error);
-      errorCallback(error);
+      if(errorCallback) errorCallback(error);
     };
     
     var calendarService = new google.gdata.calendar.CalendarService('schedule-butler');
