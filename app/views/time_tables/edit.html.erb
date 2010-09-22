@@ -16,7 +16,7 @@
   <%= form_for([@event, @time_table]) do |f| %>
     <%= f.hidden_field :times, :value => @times %>
     <div class="actions">
-      <%= f.submit %>
+      <%= f.submit "Save My Changes" %>
     </div>
   <% end %>
 </div>
