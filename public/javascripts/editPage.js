@@ -1,6 +1,17 @@
 $(function() {
   ScheduleButler.createCalendar('#calendarSelect');
-
+  
+  var createTooltips = function() {
+    if (google.accounts.user.checkLogin(calendarScope)) {
+      ScheduleButler.injectGoogleData(ScheduleButler.createTooltips);
+    } else {
+      ScheduleButler.createTooltips();
+    }
+  }
+  
+  $('#calendarSelect .next, #calendarSelect .previous').click(createTooltips);
+  createTooltips();
+  
   $('form').submit(function(e) {
     var timesObj = $('#calendarSelect').data('calendarSelect');
     var timesArray = [];

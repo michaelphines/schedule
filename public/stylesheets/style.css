@@ -92,7 +92,7 @@ body, #bodyContent {
 
 #content {
   margin: auto;
-  width: 850px;
+  width: 900px;
 }
 
 #smallForm h3 {
@@ -161,7 +161,7 @@ h2.alert {
 #calendarSelect ul.hours li.hour {
   display: inline-block;
   padding: 5px;
-  margin: 1px 1px 1px 0px;
+  margin: 3px 2px;
   border: 1px solid black;
   font-size: 12px;
   width: 19px;
@@ -172,6 +172,11 @@ h2.alert {
   -webkit-border-radius: 5px;
   border-radius: 5px;
   behavior: url(/javascripts/PIE.htc);
+}
+
+#calendarSelect ul.hours li.hour.google {
+  margin: 0px;
+  border: 3px solid orange;
 }
 
 #calendarSelect ul.days li {

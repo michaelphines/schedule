@@ -152,11 +152,10 @@
               .data("selected", true);
         }
         
-        var emails = this.emails[thisTime.valueOf()];
-        if (emails) item.attr('title', emails.join('<br />'));
-        
         this.colorHour(item, thisTime);
 
+        var emails = this.emails[thisTime.valueOf()];
+        item.data("emails", emails);
         item.text(hour + meridiem)
             .data("time", thisTime.valueOf())
             .appendTo(list);
