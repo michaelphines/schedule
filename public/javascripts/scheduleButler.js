@@ -9,7 +9,8 @@ ScheduleButler = {
   
   availabilityRange: function() {
     availability = ScheduleButler.parseField('#availability');
-    return [availability[0].time, availability[availability.length-1].time];
+    if (availability.length == 0) return [0, 0];
+    else return [availability[0].time, availability[availability.length-1].time];
   },
   
   parseAllFields: function(force) {
