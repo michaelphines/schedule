@@ -1,5 +1,7 @@
 $(function() {
   ScheduleButler.createCalendar('#calendarSelect');
+
+  var calendarScope = "https://www.google.com/calendar/feeds/";
   
   var createTooltips = function() {
     if (google.accounts.user.checkLogin(calendarScope)) {
@@ -29,18 +31,14 @@ $(function() {
              '/time_tables/' + ScheduleButler.currentTimeTable();
   
   $('#newEventEmail').click(function() {
-    $.post(base_uri + '/send_created_event', {}, function() {
-      $('#newDialog').dialog('close');
-    });
+    $.post(base_uri + '/send_created_event');
+    $('#newDialog').dialog('close');
   });
 
   $('#newTimeTableEmail').click(function() {
-    $.post(base_uri + '/send_joined_event', {}, function() {
-      $('#newDialog').dialog('close');
-    });
+    $.post(base_uri + '/send_joined_event');
+    $('#newDialog').dialog('close');
   });
-  
-  var calendarScope = "https://www.google.com/calendar/feeds/";
 
   $('#googleCalendarConnect').click(function() {
     google.accounts.user.login(calendarScope);
