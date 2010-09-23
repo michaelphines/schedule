@@ -177,6 +177,10 @@ h2.alert {
 #calendarSelect ul.hours li.hour.google {
   margin: 0px;
   border: 3px solid orange;
+  -moz-border-radius: 0px;
+  -webkit-border-radius: 0px;
+  border-radius: 0px;
+  behavior: url(/javascripts/PIE.htc);
 }
 
 #calendarSelect ul.days li {

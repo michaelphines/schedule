@@ -56,14 +56,6 @@ ScheduleButler = {
     });
   },
   
-  googleRangeQuery: function(range) {
-    var feedUri = 'https://www.google.com/calendar/feeds/default/private/full';
-    var query = new google.gdata.calendar.CalendarEventQuery(feedUri);
-    query.setMinimumStartTime(new google.gdata.DateTime(new Date(range[0])));
-    query.setMaximumStartTime(new google.gdata.DateTime(new Date(range[1])));
-    return query;
-  },
-  
   extractHoursFromEvent: function(event, googleEvents) {
     var start = event.getTimes()[0].getStartTime().getDate();
     var end = event.getTimes()[0].getEndTime().getDate();
@@ -93,30 +85,46 @@ ScheduleButler = {
   },
   
   injectGoogleData: function(callback, errorCallback) {
-    var range = ScheduleButler.currentPageRange();
-    var handleSuccess = function(root) {
-      var events = root.feed.getEntries();
+    ScheduleButler.getEventsFromAllCalendars(function(result) {
+      var events = result.feed.getEntries();
       var googleEvents = {};
+      
       for (var i = 0; i < events.length; i++) {
         googleEvents = ScheduleButler.extractHoursFromEvent(events[i], googleEvents);
       }
+      
       $('#calendarSelect .hour').each(function(index, value) {
         var hour = $(value).data('time');
         var events = googleEvents[hour];
         if (events) {
           $(value).addClass('google');
-          $(value).data('googleEvents', events);
+          var currentEvents = $(value).data('googleEvents') || [];
+          
+          $(value).data('googleEvents', currentEvents.concat(events));
         }
       });
+      
       if(callback) callback(events);
-    };  
-    
-    var handleError = function(error) {
-      if (console) console.log(error);
-      if(errorCallback) errorCallback(error);
-    };
-    
+      
+    }, errorCallback)
+  },
+  
+  getEventsFromAllCalendars: function(callback, errorCallback) {
     var calendarService = new google.gdata.calendar.CalendarService('schedule-butler');
-    calendarService.getEventsFeed(ScheduleButler.googleRangeQuery(range), handleSuccess, handleError);
+    calendarService.getAllCalendarsFeed('https://www.google.com/calendar/feeds/default/allcalendars/full', function(result) {
+      var calendars = result.feed.entry;
+      for (var i = 0; i < calendars.length; i++) {
+        var feedUri = calendars[i].getEventFeedLink().getHref();
+        var query = ScheduleButler.googleRangeQuery(feedUri, ScheduleButler.currentPageRange())
+        calendarService.getEventsFeed(query, callback, errorCallback);
+      }
+    }, errorCallback);    
+  },
+  
+  googleRangeQuery: function(feedUri, range) {
+    var query = new google.gdata.calendar.CalendarEventQuery(feedUri);
+    query.setMinimumStartTime(new google.gdata.DateTime(new Date(range[0])));
+    query.setMaximumStartTime(new google.gdata.DateTime(new Date(range[1])));
+    return query;
   }
 };

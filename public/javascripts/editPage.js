@@ -1,18 +1,5 @@
 $(function() {
   ScheduleButler.createCalendar('#calendarSelect');
-
-  var calendarScope = "https://www.google.com/calendar/feeds/";
-  
-  var createTooltips = function() {
-    if (google.accounts.user.checkLogin(calendarScope)) {
-      ScheduleButler.injectGoogleData(ScheduleButler.createTooltips);
-    } else {
-      ScheduleButler.createTooltips();
-    }
-  }
-  
-  $('#calendarSelect .next, #calendarSelect .previous').click(createTooltips);
-  createTooltips();
   
   $('form').submit(function(e) {
     var timesObj = $('#calendarSelect').data('calendarSelect');
@@ -40,6 +27,16 @@ $(function() {
     $('#newDialog').dialog('close');
   });
 
+  window.onbeforeunload = function() {
+    if ($('#calendarSelect').data('modified')) {
+      return "Your changes have not been saved yet.";
+    } else {
+      return null;
+    }
+  }
+
+  var calendarScope = "https://www.google.com/calendar/feeds/";
+
   $('#googleCalendarConnect').click(function() {
     google.accounts.user.login(calendarScope);
   });
@@ -58,11 +55,16 @@ $(function() {
     $('#googleCalendarDisconnect').hide();
   }
 
-  window.onbeforeunload = function() {
-    if ($('#calendarSelect').data('modified')) {
-      return "Your changes have not been saved yet.";
+  var createTooltips = function() {
+    if (google.accounts.user.checkLogin(calendarScope)) {
+      ScheduleButler.injectGoogleData(ScheduleButler.createTooltips);
     } else {
-      return null;
+      ScheduleButler.createTooltips();
     }
   }
+  
+  $('#calendarSelect .next, #calendarSelect .previous').click(createTooltips);
+  createTooltips();
+
+
 });
