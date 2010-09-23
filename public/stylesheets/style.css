@@ -161,8 +161,8 @@ h2.alert {
 #calendarSelect ul.hours li.hour {
   display: inline-block;
   padding: 5px;
-  margin: 3px 2px;
-  border: 1px solid black;
+  margin: 4px 1px 0 0;
+  border: 1px solid #666;
   font-size: 12px;
   width: 19px;
   vertical-align: middle;
@@ -175,8 +175,9 @@ h2.alert {
 }
 
 #calendarSelect ul.hours li.hour.google {
-  margin: 0px;
-  border: 3px solid orange;
+  margin: 2px 1px 0 0;
+  width: 17px;
+  border: 2px solid black;
   -moz-border-radius: 0px;
   -webkit-border-radius: 0px;
   border-radius: 0px;
@@ -336,6 +337,22 @@ h2.alert {
 #showPreview {
   clear: both;
   display: block;
+  text-align: center;
+}
+
+#respondentsDialog {
+  display: none;
+  max-height: 300px;
+  overflow-y: scroll;
+}
+
+#respondentsDialog ul {
+  margin-top: 10px;
+}
+
+#respondentsDialog ul li {
+  margin-top: 10px;
+  list-style-type: none;
   text-align: center;
 }
 

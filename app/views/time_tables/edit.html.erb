@@ -1,7 +1,7 @@
 <% content_for(:javascripts) do %>  
   <%= javascript_include_tag('jquery.calendarSelect') %>
   <%= javascript_include_tag('editPage') %>
-  <script type="text/javascript" src="http://www.google.com/jsapi"></script>
+  <script type="text/javascript" src="http://www.google.com/jsapi?key=ABQIAAAATaAMXTegd0y6ylfgS2BWDxQ1PYv-JNNg2tVY2HS2bQLvfzrYORTt0jOgtwpSFSAcOIka_pKuXzDKzA"></script>
   <script type="text/javascript">google.load("gdata", "1");</script>
 <% end %>
 
@@ -21,6 +21,7 @@
   <% end %>
 </div>
 
-<%= render :partial => 'new_event_dialog' if flash[:new_event] %>
-<%= render :partial => 'new_time_table_dialog' if flash[:new_time_table] %>
+<%= render 'new_event_dialog' if flash[:new_event] %>
+<%= render 'new_time_table_dialog' if flash[:new_time_table] %>
+<%= render 'respondents', :event => @event %>
 <img src="/images/pixel.gif" style="width: 1px; height: 1px;" />
