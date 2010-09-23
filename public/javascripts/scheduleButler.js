@@ -65,7 +65,7 @@ ScheduleButler = {
 
     for(var hour = start; start < end; start.setHours(start.getHours()+1)) {
       if (!googleEvents[hour.valueOf()]) googleEvents[hour.valueOf()] = [];
-      googleEvents[hour.valueOf()].push(event.getTitle().getText());
+      googleEvents[hour.valueOf()].push({title: event.getTitle().getText(), href: event.getHtmlLink().getHref()});
     }
     return googleEvents;
   },
@@ -76,11 +76,33 @@ ScheduleButler = {
       var emails = $(value).data('emails');
 
       var eventTitle = "";
-      if (googleEvents) eventTitle += "<b>Google Calendar Events:</b><br />" + googleEvents.join("<br />");
+      if (googleEvents) {
+        var googleEventTitles = googleEvents.map(function(index, value) {
+          return value.title;
+        });
+        eventTitle += "<b>Google Calendar Events:</b><br />" + googleEventTitles.join("<br />");
+      }
       if (googleEvents && emails) eventTitle += "<hr />";
       if (emails) eventTitle += "<b>Available people:</b><br />" + emails.join("<br />");
 
       $(value).attr('title', eventTitle).tipTip();
+    });
+  },
+  
+  createContextMenu: function() {
+    $('#calendarSelect .hour').each(function(index, value) {
+      var googleEvents = $(value).data('googleEvents');
+      var emails = $(value).data('emails');
+
+      var googleEventMenuItems = [];
+      if (googleEvents) {
+        googleEventMenuItems = googleEventMenuItems.concat(googleEvents.map(function(event) {
+          var obj = {};
+          obj["Edit " + event.title + " in Google Calendar"] = function() { location.href = event.href };
+          return obj;
+        }));
+        $(value).contextMenu(googleEventMenuItems);
+      }
     });
   },
   

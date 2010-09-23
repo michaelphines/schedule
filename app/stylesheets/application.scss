@@ -157,4 +157,19 @@ div.field, div.actions {
   display: none;
 }
 
-
+.context-menu {
+  background-color: white;
+  cursor: default;
+  border: 1px solid black; 
+  @include box-shadow(gray, 2px, 2px, 5px);
+  
+  .context-menu-item { 
+    border-bottom: 1px solid gray; 
+    padding: 4px;
+    font-family: sans-serif;
+    font-size: 10px;
+  }
+  .context-menu-item-hover {
+    background-color: yellow;
+  }
+}

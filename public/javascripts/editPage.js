@@ -59,16 +59,19 @@ $(function() {
     $('#googleCalendarDisconnect').hide();
   }
 
-  var createTooltips = function() {
+  var connectContext = function() {
     if (google.accounts.user.checkLogin(calendarScope)) {
-      ScheduleButler.injectGoogleData(ScheduleButler.createTooltips);
+      ScheduleButler.injectGoogleData(function() {
+        ScheduleButler.createTooltips()
+        ScheduleButler.createContextMenu();
+      });
     } else {
       ScheduleButler.createTooltips();
     }
   }
   
-  $('#calendarSelect .next, #calendarSelect .previous').click(createTooltips);
-  createTooltips();
+  $('#calendarSelect .next, #calendarSelect .previous').click(connectContext);
+  connectContext();
 
 
 });
