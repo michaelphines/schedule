@@ -9,7 +9,7 @@
     <p>Send your friends this url:</p>
     <div class="newEventUrl"><%= event_url(@event) %></div>
     <p>Bookmark this url for yourself:</p>
-    <div class="newTimeTableUrl"><%= event_time_table_url(@event, @time_table) %></div>
+    <div class="newTimeTableUrl"><%= edit_event_time_table_url(@event, @time_table) %></div>
     <div class="buttons"><input type="button" id="newEventEmail" value="Send me an email with this info!" /></div>
   </div>
 </div>
