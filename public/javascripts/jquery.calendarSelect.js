@@ -166,12 +166,13 @@
     
     this.colorHour = function(item, time) {
       var availability = this.availability[time.valueOf()];
-      if (!availability || availability < .33) {
-        item.addClass('cold')
-      } else if (availability < .66) {
-        item.addClass('warm')
-      } else {
+      
+      if (availability > .67) {
         item.addClass('hot')
+      } else if (availability > .34) {
+        item.addClass('warm')
+      } else if (availability > 0) {
+        item.addClass('cold')
       }
     };
 
