@@ -101,6 +101,17 @@ ScheduleButler = {
           obj["Edit " + event.title + " in Google Calendar"] = function() { location.href = event.href };
           return obj;
         }));
+        var newEventHandler = {};
+        newEventHandler["Create new event in EventWax"] = function() {
+          var date = (new Date($(value).data('time')).getMonth() + 1) + "/" + new Date($(value).data('time')).getDate() + "/" + new Date($(value).data('time')).getFullYear();
+
+          location.href = "http://michaelphines.eventwax.com/admin/event/create?event[name]=" +
+          $('#eventTitle h3').text() + 
+          "&event_session[local_starts_on][date]=" + date +
+          "&event_session[local_starts_on][time][h]=" + new Date($(value).data('time')).getHours() +
+          "&event_session[local_starts_on][time][m]=" + new Date($(value).data('time')).getMinutes()
+        };
+        googleEventMenuItems.push(newEventHandler);
         $(value).contextMenu(googleEventMenuItems);
       }
     });
