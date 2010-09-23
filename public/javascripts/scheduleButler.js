@@ -114,9 +114,11 @@ ScheduleButler = {
     calendarService.getAllCalendarsFeed('https://www.google.com/calendar/feeds/default/allcalendars/full', function(result) {
       var calendars = result.feed.entry;
       for (var i = 0; i < calendars.length; i++) {
-        var feedUri = calendars[i].getEventFeedLink().getHref();
-        var query = ScheduleButler.googleRangeQuery(feedUri, ScheduleButler.currentPageRange())
-        calendarService.getEventsFeed(query, callback, errorCallback);
+        var eventFeed = calendars[i].getEventFeedLink();
+        if (eventFeed) {
+          var query = ScheduleButler.googleRangeQuery(eventFeed.getHref(), ScheduleButler.currentPageRange())
+          calendarService.getEventsFeed(query, callback, errorCallback);
+        }
       }
     }, errorCallback);    
   },
