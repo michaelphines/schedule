@@ -1,23 +1,14 @@
 <%= form_for(@event) do |f| %>
-  <% if @event.errors.any? %>
-  <div id="errorExplanation">
-    <h3><%= pluralize(@event.errors.count, "error") %> prohibited this event from being saved:</h2>
-    <ul>
-    <% @event.errors.full_messages.each do |msg| %>
-      <li><%= msg %></li>
-    <% end %>
-    </ul>
-  </div>
-  <% end %>
-
   <div class="field">
-    <%= f.label :email %>
+    <%= f.label :email, "Please enter your email address" %>
     <%= f.text_field :email %>
   </div>
+  
   <div class="field">
-    <%= f.label :title, "Event Description" %>
+    <%= f.label :title, "Enter a short description of your event" %>
     <%= f.text_field :title %>
   </div>
+  
   <div class="actions">
     <%= f.submit %>
   </div>

@@ -1,14 +1,10 @@
-<div id="content">
-  <div id="info">
-    <h3>Get started!</h3>
-    It's dead simple:
-    <ol>
-      <li>Create an event</li>
-      <li>Send the link to your friends</li>
-      <li>The butler does the rest!</li>
-    </ol>
-  </div>
-  <div id="smallForm">
-    <%= render 'form' %>
-  </div>
-</div>
+<% content_for :sidebar do %>
+  <%= render 'what_is' %>
+  <h3>How do I start?</h3>
+  <p>
+    Just enter your email address over there to the right, and enter a description
+    of your event.  You'll get two links: one for you, and one for your friends.
+  </p>
+<% end %>
+
+<%= render 'form' %>

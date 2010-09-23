@@ -5,11 +5,12 @@
   <script type="text/javascript">google.load("gdata", "1");</script>
 <% end %>
 
-<div id="content">
-  <input type="button" value="Connect to Google Calendar" id="googleCalendarConnect" />
-  <input type="button" value="Disconnect from Google" id="googleCalendarDisconnect" />
+<% content_for(:sidebar) do %>
   <h3><%= @event.title %></h3>
   <h4>for <%= @time_table.email %></h4>
+<% end %>
+
+<% content_for(:footer) do %>
   <div id="calendarSelect"></div>
   <%= hidden_field_tag :availability, @event.availability.to_json %>
   <%= hidden_field_tag :max_attendance, @event.max_attendance.to_json %>
@@ -19,9 +20,14 @@
       <%= f.submit "Save My Changes" %>
     </div>
   <% end %>
-</div>
+  <img src="/images/pixel.gif" style="width: 1px; height: 1px;" />
 
-<%= render 'new_event_dialog' if flash[:new_event] %>
-<%= render 'new_time_table_dialog' if flash[:new_time_table] %>
-<%= render 'respondents', :event => @event %>
-<img src="/images/pixel.gif" style="width: 1px; height: 1px;" />
+  <%= render 'new_event_dialog' if flash[:new_event] %>
+  <%= render 'new_time_table_dialog' if flash[:new_time_table] %>
+  <%= render 'respondents', :event => @event %>
+<% end %>
+
+<input type="button" value="View people who have registered" id="showRespondentsDialog" />
+<input type="button" value="Connect to Google Calendar" id="googleCalendarConnect" />
+<input type="button" value="Disconnect from Google" id="googleCalendarDisconnect" />
+

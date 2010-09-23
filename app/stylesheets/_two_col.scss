@@ -1,0 +1,11 @@
+@import "blueprint";
+
+body {
+  #container { @include container; }
+  #header, #footer { @include column(24); }
+  #sidebar { @include column(8); }
+  #content { 
+    @include push(1);
+    @include column(15, true); 
+  }
+}

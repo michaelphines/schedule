@@ -1,0 +1,117 @@
+@import "compass/css3/border-radius";
+@import "compass/css3/box-shadow";
+
+#calendarSelect {
+  width: 850px;
+  margin: 0 50px;
+  
+  * { white-space: nowrap; }
+
+  .title {
+    margin-bottom: -$paragraph-font-size * 2;
+  }
+
+  ul.hours {
+    display: inline-block;
+    cursor: crosshair;
+
+    li.hour {
+      display: inline-block;
+      padding: 5px;
+      margin: 4px 1px 0 0;
+      border: 1px solid #666;
+      font-size: 12px;
+      width: 19px;
+      text-align: center;
+      @include border-radius(5px);
+
+      &.google {
+        margin: 2px 1px 0 0;
+        width: 17px;
+        border: 2px solid black;
+        @include border-radius(0);
+      }
+    }
+  }
+
+  ul.days {  
+    li.day {
+      list-style-type: none;
+      padding-bottom: 5px;
+
+      span.date {
+        display: inline-block;
+        width: 50px;
+        padding-right: 10px;
+        text-align: right;
+        font-size: 14px;
+      }
+    }
+  } 
+
+  .hot {
+    color: green;
+    font-weight: bold;
+    @include box-shadow(green, 0, 0, 20px, 0);
+  }
+
+  .warm {
+    color: orange;
+    @include box-shadow(yellow, 0, 0, 20px, 0);
+  }
+
+  .cold {
+    color: red;
+    @include box-shadow(red, 0, 0, 20px, 0);
+  }
+
+  .ui-selected, .ui-unselecting, .ui-selecting
+  {
+    color: black;
+  }
+  
+  &.static {
+    // fill-in times with their color for a static preview
+    .hot  { background-color: #afa; }
+    .warm { background-color: #ffa; }
+    .cold { background-color: #faa; } 
+    ul.hours li.hour { color: black; cursor: help; }  
+  }
+  
+  // Highlight newly selected times before save
+  &.newSchedule {
+    .ui-selected, .ui-selecting, .ui-unselecting { 
+      @include box-shadow(green, 0, 0, 20px, 0); 
+    }
+  }
+
+  a.previous, a.next {
+    display: block;
+    padding: 10px;
+    text-align: center;
+  }
+}
+
+.ui-selectee {
+  background-color: #fff;
+}
+
+.ui-selecting {
+  background-color: #afa;
+}
+
+.ui-selected {
+  background-color: #5f5;
+}
+
+.ui-unselecting {
+  background-color: #5f5;
+}
+
+.cs-unselecting .ui-selecting {
+  background-color: #fff;
+}
+
+.ui-selectable-helper {
+  border: 1px dotted black;
+}

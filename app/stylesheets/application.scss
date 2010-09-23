@@ -1,0 +1,151 @@
+@import "compass/css3/border-radius";
+@import "compass/css3/gradient";
+@import "compass/css3/box-shadow";
+
+@import "base";
+@import "two_col";
+@import "calendar_select";
+@import "dialogs";
+
+html { height: 100%; }
+body {
+  font-family: $sans-serif-font;
+  background: #aaa no-repeat;
+  @include linear-gradient(color-stops(#fff, #aaa));
+}
+
+body, h1, h2, h3, h4, h5, ul, ul li {
+  margin: 0;
+  padding: 0;
+}
+
+#header {
+  background-color: black;
+  color: white;
+  text-align: center;
+  padding: 25px;
+  
+  h1 {
+    font-size: $header-font-size;
+    line-height: $header-font-size;
+    font-family: $fancy-font;
+  }
+
+  h2 {
+    font-size: $standard-font-size;
+    line-height: $standard-font-size;
+    font-family: $fancy-font;
+  }
+}
+
+#sidebar {
+  font-size: $paragraph-font-size;
+  line-height: $paragraph-font-size * 1.5;
+  
+  h3 {
+    font-family: $sans-serif-font;
+    font-size: $secondary-header-font-size;
+    line-height: $secondary-header-font-size * 1.5;
+  }
+  
+  p {
+    margin-bottom: $paragraph-font-size;
+  }
+}
+
+#content {
+  padding-top: 5px;
+  text-align: center;
+  
+  h3 {
+    padding-top: 15px;
+    text-align: center;
+    font-family: $sans-serif-font;
+    font-size: $secondary-header-font-size;
+    line-height: $secondary-header-font-size * 1.5;
+  }
+  
+  h4 {
+    margin: -10px 0 20px 0;
+    text-align: center;
+    font-family: $sans-serif-font;
+    font-size: $standard-font-size;
+    line-height: $standard-font-size * 1.5;
+  }
+}
+
+#footer {
+  h3 {
+    font-family: $sans-serif-font;
+    font-size: $secondary-header-font-size;
+    line-height: $secondary-header-font-size * 1.5;
+  }
+}
+
+input[type='submit'], input[type='button'] { 
+  font-family: $sans-serif-font;
+  font-size: $input-font-size;
+  height: $input-font-size * 2;
+  width: 350px;
+}
+
+input[type='text'] { 
+  font-size: $input-font-size; 
+  font-family: $serif-font;
+  border: 1px solid $border-color;
+  padding: 6px;
+  @include linear-gradient(color-stops(#eee, #ddd 20px, #fff 40px));
+}
+
+.field {
+  text-align: left;
+  
+  label {
+    display: block;
+    font-size: $standard-font-size;
+    font-family: $sans-serif-font;
+  }
+
+  .field_with_errors {
+    color: red;
+
+    input {
+      border-color: red;
+      color: red;
+    }
+  }
+}
+
+.actions {
+  text-align: center;
+}
+
+#preview {
+  display: none;
+  clear: both;
+}
+
+#showPreview {
+  clear: both;
+  display: block;
+  text-align: center;
+}
+
+div.field, div.actions {
+  margin-bottom: 10px;
+}
+
+input#googleCalendarConnect,input#googleCalendarDisconnect, #showRespondentsDialog {
+  @include float-right;
+  clear: right;
+  margin: 2px;
+  font-size: 15px;
+  height: 30px;
+  width: auto;
+}
+
+input#googleCalendarDisconnect {
+  display: none;
+}
+
+

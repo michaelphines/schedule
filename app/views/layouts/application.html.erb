@@ -4,19 +4,33 @@
   <title>Schedule Butler</title>
   <script type="text/javascript" src="http://use.typekit.com/tcd3aid.js"></script>
   <%= javascript_include_tag 'loadTypekit' %>
-  
-  <%= stylesheet_link_tag :all %>
-  <%= yield :stylesheets %>
+
+  <%= stylesheet_link_tag 'tipTip.css', :media => 'screen, projection' %>
+  <%= stylesheet_link_tag 'compiled/application.css', :media => 'screen, projection' %>
   <%= csrf_meta_tag %>
+  <!--[if lt IE 8]>
+    <%= stylesheet_link_tag 'compiled/ie.css', :media => 'screen, projection' %>
+  <![endif]-->
+
 </head>
 <body>
-  <div id="header">
-    <h1>Schedule Butler</h1>
-    <h2>It's like having a butler to help you schedule</h2>
+  <div id="showgrid"></div>
+  <div id="container">
+    <div id="header">
+      <h1>Schedule Butler</h1>
+      <h2>It's like having a butler to help you schedule</h2>
+    </div>
+    <div id="sidebar">
+      <%= yield :sidebar %>
+    </div>
+    <div id="content">
+      <%= yield %>
+    </div>
+    <div id="footer">
+      <%= yield :footer %>
+    </div>
   </div>
-  <div id="bodyContent">
-    <%= yield %>
-  </div>
+
   <%= javascript_include_tag 'jquery-1.4.2', 'jquery-ui-1.8.2.custom.min', 'rails', 'scheduleButler', 'jquery.tipTip.minified' %>
   <%= yield :javascripts %>
 </body>

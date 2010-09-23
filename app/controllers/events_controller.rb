@@ -25,7 +25,7 @@ class EventsController < ApplicationController
     @event.time_tables << @time_table
     
     respond_to do |format|
-      if @time_table.save
+      if @event.valid? && @time_table.save
         flash[:new_event] = true
         format.html { redirect_to(edit_event_time_table_url(@event.permalink, @time_table.permalink)) }
         format.xml  { render :xml => @event, :status => :created, :location => @event }

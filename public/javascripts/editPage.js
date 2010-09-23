@@ -11,6 +11,10 @@ $(function() {
     $('#calendarSelect').data('modified', false);
   });
 
+  $('#showRespondentsDialog').click(function() {
+    $('#respondentsDialog').dialog();
+  });
+  
   $('#newDialog').dialog();
   
   base_uri = 'http://' + location.host + 
